@@ -1,5 +1,5 @@
 defmodule Network.Init do
-  def start_link(args) do
-    GenServer.start_link(Network.Server, nil)
+  def start_link(_) do
+    GenServer.start_link(Network.Server, %Network{})
   end
 end

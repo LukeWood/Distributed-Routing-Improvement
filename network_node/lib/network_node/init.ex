@@ -1,5 +1,9 @@
 defmodule NetworkNode.Init do
-  def start_link(%{ip_address: ip_address}) do
-    GenServer.start_link(__MODULE__, %NetworkNode{ip_address: ip_address})
+  def start_link(address) do
+    GenServer.start_link(__MODULE__, %NetworkNode{address: address})
+  end
+
+  def init(_) do
+    :ok
   end
 end
