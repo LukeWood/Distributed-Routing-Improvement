@@ -11,7 +11,8 @@ defmodule NetworkNode do
   defstruct [
     address: nil,
     neighbors: [],
+    route_fn: nil,
+    send_fn:  nil,
     used_wires: %{},
-    routing_table: %{}
   ]
 end

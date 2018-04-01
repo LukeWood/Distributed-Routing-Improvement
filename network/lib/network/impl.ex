@@ -11,4 +11,5 @@ defmodule Network.Impl do
     NetworkNode.send_data(node_pid, data)
     state
   end
+
 end
