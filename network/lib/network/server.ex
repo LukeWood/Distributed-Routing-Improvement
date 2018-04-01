@@ -13,4 +13,8 @@ defmodule Network.Server do
   def handle_call(:nodes, _from, state = %{nodes: nodes}) do
     {:reply, nodes, state}
   end
+
+  def handle_call({:get_node, address}, _from, state = %{nodes: nodes}) do
+    {:reply, Map.get(nodes, address), state}
+  end
 end

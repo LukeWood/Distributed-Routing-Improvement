@@ -10,6 +10,6 @@ defmodule NetworkNode.DynamicSupervisor do
   end
 
   def new(address) do
-    DynamicSupervisor.start_child(__MODULE__, {NetworkNode, address: address})
+    DynamicSupervisor.start_child(__MODULE__, {NetworkNode.Server, address})
   end
 end

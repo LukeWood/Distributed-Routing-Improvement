@@ -1,9 +1,12 @@
 defmodule Network.Impl do
   def add_node(address, state = %{nodes: nodes}) do
     state |>
-    Map.put(:nodes,
-      Map.put_new_lazy(nodes, address, fn -> NetworkNode.new(address) end)
-    )
+      Map.put(:nodes,
+        Map.put_new_lazy(nodes, address, fn ->
+          {:ok, pid} = NetworkNode.new(address)
+          pid
+        end)
+      )
   end
 
   def send_to(data = %Packet{}, address, state = %{nodes: nodes}) do
@@ -11,5 +14,4 @@ defmodule Network.Impl do
     NetworkNode.send_data(node_pid, data)
     state
   end
-
 end

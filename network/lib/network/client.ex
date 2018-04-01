@@ -1,4 +1,9 @@
 defmodule Network.Client do
+
+  def get_node(address) do
+    GenServer.call(Network, {:get_node, address})
+  end
+
   def add_node(address) do
     GenServer.cast(Network, {:add_node, address})
   end
@@ -10,5 +15,4 @@ defmodule Network.Client do
   def nodes() do
     GenServer.call(Network, :nodes)
   end
-
 end

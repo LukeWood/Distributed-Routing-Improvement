@@ -1,9 +1,9 @@
-defmodule NetworkNode.MixProject do
+defmodule Simulator.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :network_node,
+      app: :simulator,
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
@@ -14,15 +14,15 @@ defmodule NetworkNode.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
-      mod: {NetworkNode.DynamicSupervisor, nil}
+      extra_applications: [:logger]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:packet, path: "../packet"}
+      {:network, path: "../network"},
+      {:rgg, ">= 0.1.0"}
     ]
   end
 end
